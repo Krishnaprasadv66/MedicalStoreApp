@@ -1,0 +1,85 @@
+{% extends 'layout/base.html' %}
+{% block 'content' %}
+
+<style>
+    .box{
+      
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      width: 50%;
+      
+    }
+    .box label{
+      color: red;
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 20px;
+    }
+    h1{
+      margin-top: 60px;
+      font-family: 'Times New Roman', Times, serif;
+      font-weight: bolder;
+      font-size: 50px;
+      color: red;
+    }
+  </style>
+
+
+<div>
+
+    <h1 class="text-center">Edit medicine details</h1>
+    <form method="POST" action="">
+        <div class="box">
+
+            <input type="hidden" name="csrfmiddlewaretoken"
+                value="1c8UvuVovLgercDKKhHlLPA0Ag3amdFHeh3Or2KMOLHNtDyFdi9pN00FFfsB5ybo">
+
+            <div class="form-group">
+                <label for="id_medicine">Medicine:</label>
+                <input class="form-control" type="text" name="medicine" value="{{ form.instance.medicine }}" maxlength="100" required="" id="id_medicine"
+                    fdprocessedid="vo4eh7">
+            </div>
+
+
+
+
+
+
+            <div class="form-group">
+                <label for="id_company_name">Company name:</label>
+                <input class="form-control" type="text" name="company_name" value="{{ form.instance.company_name }}" maxlength="100" required="" id="id_company_name"
+                    fdprocessedid="fccwz">
+            </div>
+
+
+
+
+
+
+            <div class="form-group">
+                <label for="id_expiry_date">Expiry date:</label>
+                <input class="form-control" type="date" name="expiry_date" value="{{ form.instance.expiry_date}}" required="" id="id_expiry_date">
+
+            </div>
+
+
+
+
+
+            <div class="form-group">
+                <label for="id_price">Price:</label>
+                <input class="form-control" type="number" name="price" value="{{ form.instance.price }}" step="any" required="" id="id_price" fdprocessedid="a66li3">
+            </div>
+
+
+
+
+
+            <button class="btn btn-success d-flex ml-auto" value="update" type="submit" fdprocessedid="uy2v58">Update</button>
+        </div>
+    </form>
+
+
+</div>
+{% endblock %}

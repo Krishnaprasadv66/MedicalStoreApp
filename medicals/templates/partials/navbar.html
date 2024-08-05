@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'sample.css' %}">
+
+<!-- bootstrap link -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
+</head>
+<body>
+    <!-- NAV BAR -->
+ <!-- Navbar for authenticated users -->
+ {% if user.is_authenticated %}
+    
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-0 m-0">
+    <div class="container-fluid">
+        <a href="#" class="navbar-brand text-muted pl-4">VISWAS</a>
+        <div class="navbar-header ml-auto">
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navone">
+                <span class="navbar-toggler-icon "></span>
+            </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navone">
+            <ul class="navbar-nav " >
+                <li class="nav-item ml-2 mr-2">
+                    <a href="{% url 'home' %}" class="text-light">HOME</a>
+                </li>
+
+                
+
+                <li class="nav-item ml-2 mr-2">
+                    <a href="{% url 'login' %}" class="text-light">LOGIN</a>
+                </li>
+
+                <li class="nav-item ml-2 mr-2">
+                    <a href="{% url 'addmedicine' %}" class="text-light">ADD MEDICINE</a>
+                </li>
+
+                <li class="nav-item ml-2 mr-2">
+                    <a href="{% url 'pageview' %}" class="text-light">MEDICINES</a>
+                </li>
+                
+            </ul>
+
+            <div class="navbar-nav ml-auto">
+                <button data-toggle="modal" data-target="#myModal" class="btn btn-danger mr-3">Logout</button>
+
+                <div class="modal fade" id="myModal" >
+                    <div class="modal-dialog" >
+                        <div class="modal-content" style="background-color: rgb(6, 172, 213);">
+                            <form id="deleteForm" method="post" action="{% url 'logout' %}">
+                                {% csrf_token %}
+                                <div class="modal-header">
+                                    <h4 class="modal-title text-dark">Confirm Logout</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <div class="modal-body ">
+                                    <b class="text-warning">You are currently logged in as {{ user.username }}.</b>
+                                    <p class="text-danger">Are you sure you want to Logout?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-danger">Logout</button>
+                                    <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+    
+
+{% else %}
+<!-- Navbar for non-authenticated users -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-0 m-0">
+    <div class="container-fluid">
+        <a href="#" class="navbar-brand text-muted pl-4">VISWAS</a>
+        <div class="navbar-header ml-auto">
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navone">
+                <span class="navbar-toggler-icon "></span>
+            </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navone">
+            <ul class="navbar-nav " >
+                <li class="nav-item ml-2 mr-2">
+                    <a href="{% url 'home' %}" class="text-light">HOME</a>
+                </li>
+
+                <li class="nav-item ml-2 mr-2">
+                    <a href="{% url 'signup' %}" class="text-light">SIGNUP</a>
+                </li>
+
+                <li class="nav-item ml-2 mr-2">
+                    <a href="{% url 'login' %}" class="text-light">LOGIN</a>
+                </li>
+
+               
+
+                <li class="nav-item ml-2 mr-2">
+                    <a href="{% url 'pageview' %}" class="text-light">MEDICINES</a>
+                </li>
+                
+            </ul>
+
+           
+        </div>
+    </div>
+</nav>
+
+        
+    
+
+{% endif %}
+
+</body>
+</html>
+
+    
+
+
+
+
+

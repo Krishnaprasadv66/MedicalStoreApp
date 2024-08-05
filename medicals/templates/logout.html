@@ -1,0 +1,16 @@
+{% extends "layout/base.html" %}
+
+{% block 'content' %}
+  <div class="text-center mt-5 ">
+
+    {% if user.is_authenticated %}
+    <p style="color: rgb(255, 80, 98);">You are currently logged in as {{ user.username }}.</p>
+    <form method="post">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger">Log Out</button>
+    </form>
+  {% else %}
+    <p>You are not currently logged in.</p>
+  </div>
+  {% endif %}
+{% endblock %}

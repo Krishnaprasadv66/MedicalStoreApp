@@ -1,0 +1,27 @@
+.bg-image-home{
+    background-image:url('../static/image11.jpg') ;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    overflow-y: auto;
+}
+
+/* 
+.bg-image-signup{
+    background-image:url('../static/image4.jpg') ;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+
+
+*/
+.bg-image-login{
+    background-image:url('../static/image5.jpg') ;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+} 
+
+

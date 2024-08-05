@@ -1,0 +1,57 @@
+{%extends 'layout/base.html'%}
+{%block 'content'%}
+
+
+<div class="text-center ">
+
+
+    <h1>MEDICINES</h1>
+    <table  class="text-center table table-striped  table-bordered">
+        <tr><th>Id</th>
+            <th>Medicine</th>
+            <th>company Name</th>
+            <th>Expiry Date</th>
+            <th>Price</th>
+            <th >Actions</th></tr>
+        
+    {%for medicine_details in product_list%}
+    <tr>
+    <td>{{medicine_details.id}}</td>
+    <td>{{ medicine_details.medicine }} </td> 
+    <td>{{ medicine_details.company_name }}</td>
+    <td>{{ medicine_details.expiry_date }}</td> 
+    <td>{{ medicine_details.price }}</td>
+
+    <td><a href="{%url 'editdata' medicine_details.id %}" class="btn btn-warning" value="edit" type="submit"><i class="fa fa-edit"></i></i></a>
+      &nbsp;  
+      <button data-toggle="modal" data-target="#myModal{{ medicine_details.id}}" class="btn btn-danger mr-3"><i class="fa fa-trash"></i></button> 
+    </td>
+    </tr>
+
+    <div class="modal fade" id="myModal{{ medicine_details.id }}">
+        <div class="modal-dialog">
+            <div class="modal-content " style="background-color: rgb(6, 172, 213);">
+                <form id="deleteForm{{ medicine_details.id }}" method="post" action="{%url 'deletedata' medicine_details.id %}">
+                    {% csrf_token %}
+                    <div class="modal-header">
+                        <h4 class="modal-title text-primary">Confirm Delete</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body text-danger">
+                        <p>Are you sure you want to delete the medicine "{{ medicine_details.medicine|upper }}"?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+     
+        {% endfor %}
+    </table>
+
+
+</div>
+{%endblock%}
